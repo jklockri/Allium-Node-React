@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import Cards from './components/cards';
-import './App.css';
+import Table from './components/table';
 
 class App extends Component {
   render() {
+    const suits = ['Spades', 'Hearts', 'Diamonds', 'Clubs'];
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Cards/>
+        <Table suits={suits}/>
       </div>
     );
   }
