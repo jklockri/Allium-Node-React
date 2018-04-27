@@ -5,7 +5,8 @@ const port = 5000;
 
 app.get('/api/cards', (req, res) => {
   let deck = new Deck;
-  res.send(deck.cards);
+  let shuffledDeck = deck.shuffle();
+  res.send(shuffledDeck);
 });
 app.listen(port, () => {
   console.log(`app started on port ${port}`);
