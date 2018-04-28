@@ -9,7 +9,7 @@ class App extends Component {
     };
   }
 
-  fetchCards = () => {
+  updateKey = () => {
     this.setState({ update: this.state.update + 1 });
   };
 
@@ -18,7 +18,7 @@ class App extends Component {
     return (
       <div className="App">
         <Table key={this.state.update} suits={suits}/>
-        <button onClick= {this.fetchCards}>Deal Again</button>
+        <button onClick= {this.updateKey}>Deal Again</button>
       </div>
     );
   }

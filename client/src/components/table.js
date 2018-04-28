@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TableRow from './table_row';
+import Score from './score';
 
 class Table extends Component {
   constructor() {
@@ -32,6 +33,7 @@ class Table extends Component {
                cards={this.state.cards.slice(i * 13, (i + 1) * 13)}/>
           )}
         </table>
+        <Score cards ={this.state.cards} suits={this.props.suits}/>
       </div>
     );
   }
