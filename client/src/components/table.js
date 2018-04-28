@@ -8,13 +8,14 @@ class Table extends Component {
     this.state = {
       cards: [],
     };
+    this.total = 0;
   }
 
   componentDidMount() {
     fetch('/api/cards/')
     .then((res) => res.json())
     .then((cards) => this.setState({ cards }))
-    .then(() => console.log(this.state.cards))
+    .then(() => console.log(this.total))
     .then(() => fetch('/api/cards/', {
       method: 'POST',
       headers: {
@@ -23,9 +24,14 @@ class Table extends Component {
       },
       body: JSON.stringify({
         cards: this.state.cards,
+        total: this.total,
       }),
     }));
   }
+
+  updateTotal= (total) => {
+    this.total = total;
+  };
 
   render() {
     const tableHeaderArray = ['Suit', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
@@ -44,7 +50,9 @@ class Table extends Component {
                cards={this.state.cards.slice(i * 13, (i + 1) * 13)}/>
           )}
         </table>
-        <Score cards ={this.state.cards} suits={this.props.suits}/>
+        <Score cards={this.state.cards}
+               suits={this.props.suits}
+               triggerUpdate={this.updateTotal} />
       </div>
     );
   }

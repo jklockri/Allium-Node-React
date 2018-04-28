@@ -16,8 +16,9 @@ app.get('/api/cards', (req, res) => {
 app.post('/api/cards/', (req, res) => {
   var deck = new Deckdb({
     cards: req.body.cards,
+    total: req.body.total,
   });
-  deck.save();
+  deck.save().then((deck) => res.send(deck), (e) => res.send(e));
 });
 
 app.listen(port, () => {
