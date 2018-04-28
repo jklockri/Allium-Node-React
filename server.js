@@ -2,7 +2,9 @@ const express = require('express');
 const { mongoose } = require('./db/mongoose');
 const { Deckdb } = require('./db/models/deck');
 const { Deck, Player } =  require('playing-cards-js');
+const bodyParser = require('body-parser');
 const app = express();
+app.use(bodyParser.json());
 const port = 5000;
 
 app.get('/api/cards', (req, res) => {
@@ -14,7 +16,6 @@ app.get('/api/cards', (req, res) => {
 app.post('/api/cards/', (req, res) => {
   var deck = new Deckdb({
     cards: req.body.cards,
-    total: req.body.total,
   });
   deck.save();
 });

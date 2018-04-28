@@ -13,7 +13,18 @@ class Table extends Component {
   componentDidMount() {
     fetch('/api/cards/')
     .then((res) => res.json())
-    .then((cards) => this.setState({ cards }));
+    .then((cards) => this.setState({ cards }))
+    .then(() => console.log(this.state.cards))
+    .then(() => fetch('/api/cards/', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        cards: this.state.cards,
+      }),
+    }));
   }
 
   render() {
