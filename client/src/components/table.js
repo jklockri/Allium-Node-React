@@ -13,7 +13,7 @@ class Table extends Component {
   componentDidMount() {
     fetch('/api/cards/')
     .then((res) => res.json())
-    .then((cards) => this.setState({ cards }, ()=> console.log(cards)));
+    .then((cards) => this.setState({ cards }));
   }
 
   render() {
