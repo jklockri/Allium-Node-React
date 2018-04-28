@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TableRow from './table_row';
 import Score from './score';
+import Emoji from 'react-emoji-render';
 
 class Table extends Component {
   constructor() {
@@ -37,7 +38,7 @@ class Table extends Component {
   render() {
     const tableHeaderArray = ['Suit', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
     return (
-      <div className="container">
+      <div>
         <table className='table'>
           <thead>
             <tr>

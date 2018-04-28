@@ -31,11 +31,14 @@ class Score extends Component {
           });
         })}
         <h1>Total</h1>
-        {console.log('thisonw', this.total)}
         {this.props.triggerUpdate(this.total)}
-        <h1>{this.total}</h1>
+        <h1>{((this.total / 104) * 100).toFixed(2)}%</h1>
         <h1>Average Score</h1>
-        <h1>{ this.props.totals.length > 0 ? this.props.totals.reduce((a, b) => a + b) : null }</h1>
+        <h1>{ this.props.totals.length > 0 ?
+            (((this.props.totals.reduce((a, b) => a + b)
+             / (104 * this.props.totals.length)) * 100)
+             .toFixed(2))
+            : null }%</h1>
       </div>
     );
   }

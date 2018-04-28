@@ -13,7 +13,6 @@ class App extends Component {
 
   updateKey = () => {
     this.setState({ update: this.state.update + 1, showPastDecks: false });
-
   };
 
   fetchPastDecks = () => {
@@ -23,12 +22,22 @@ class App extends Component {
   render() {
     const suits = ['Spades', 'Hearts', 'Diamonds', 'Clubs'];
     return (
-      <div className="App">
+      <div className="container">
+
+        <h1>Node Dealer </h1>
         <Table key={this.state.update} suits={suits}/>
-        <button onClick = {this.updateKey}>Deal Again</button>
-        <button onClick = {this.fetchPastDecks}>fetch past decks</button>
+        <button type="button"
+                className="btn btn-primary"
+                onClick = {this.updateKey}>
+                Deal Again</button>
+
+        <button type="button"
+                className="btn btn-success"
+                onClick = {this.fetchPastDecks}>
+                Historical Decks</button>
+
         {this.state.showPastDecks ?
-          <PastDecks suits= {suits} /> : null}
+          <PastDecks suits= {suits}/> : null}
 
       </div>
     );
