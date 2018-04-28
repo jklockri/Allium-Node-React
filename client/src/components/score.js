@@ -5,8 +5,15 @@ class Score extends Component {
     super();
     this.state = {
       total: 0,
+      decks: [],
     };
     this.total = 0;
+  }
+
+  componentDidMount() {
+    fetch('/api/decks')
+    .then((res) => res.json())
+    .then((decks) => this.setState({ decks }, () => console.log(decks)));
   }
 
   render() {

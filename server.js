@@ -3,6 +3,7 @@ const { mongoose } = require('./db/mongoose');
 const { Deckdb } = require('./db/models/deck');
 const { Deck, Player } =  require('playing-cards-js');
 const bodyParser = require('body-parser');
+
 const app = express();
 app.use(bodyParser.json());
 const port = 5000;
@@ -19,6 +20,10 @@ app.post('/api/cards/', (req, res) => {
     total: req.body.total,
   });
   deck.save().then((deck) => res.send(deck), (e) => res.send(e));
+});
+
+app.get('/api/decks/', (req, res) => {
+  Deckdb.find().then((decks) => res.send({ decks }));
 });
 
 app.listen(port, () => {
