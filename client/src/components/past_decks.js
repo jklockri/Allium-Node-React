@@ -23,6 +23,7 @@ class Table extends Component {
   };
 
   render() {
+    console.log(this.state.decks);
     const tableHeaderArray = ['Suit', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
     return (
       <div className="container">
@@ -43,6 +44,7 @@ class Table extends Component {
               )}
             </table>
               <Score key={`${index}`}
+                     totals = {this.state.decks}
                      cards={deck.cards}
                      suits={this.props.suits}
                      triggerUpdate={this.updateTotal} />

@@ -7,15 +7,16 @@ class Table extends Component {
     super();
     this.state = {
       cards: [],
+      totals: [],
+      safe: false,
     };
     this.total = 0;
   }
 
-  componentDidMount() {
+  componentWillMount() {
     fetch('/api/cards/')
     .then((res) => res.json())
-    .then((cards) => this.setState({ cards }))
-    .then(() => console.log(this.total))
+    .then((cards) => this.setState({ cards: cards.shuffledDeck, totals: cards.totals, safe: true }))
     .then(() => fetch('/api/cards/', {
       method: 'POST',
       headers: {
@@ -50,9 +51,10 @@ class Table extends Component {
                cards={this.state.cards.slice(i * 13, (i + 1) * 13)}/>
           )}
         </table>
-        <Score cards={this.state.cards}
-               suits={this.props.suits}
-               triggerUpdate={this.updateTotal} />
+        {this.state.safe ? <Score totals ={this.state.totals}
+              cards={this.state.cards}
+              suits={this.props.suits}
+              triggerUpdate={this.updateTotal} /> : null }
       </div>
     );
   }
