@@ -1,20 +1,20 @@
+require('./config');
 const express = require('express');
 const { mongoose } = require('./db/mongoose');
 const { Deckdb } = require('./db/models/deck');
-const { Deck, Player } =  require('playing-cards-js');
+const { Deck } =  require('playing-cards-js');
 const bodyParser = require('body-parser');
 
 const app = express();
 app.use(bodyParser.json());
-const port = 5000;
+const port = process.env.PORT;
 
 app.get('/api/cards', (req, res) => {
   let deck = new Deck;
   let shuffledDeck = deck.shuffle();
-  Deckdb.find().then((decks) =>
-  decks.map(cards => cards.total))
-  .then((totals) =>
-  res.send({ shuffledDeck, totals }));
+  Deckdb.find()
+    .then((decks) => decks.map(cards => cards.total))
+      .then((totals) => res.send({ shuffledDeck, totals }));
 });
 
 app.post('/api/cards/', (req, res) => {
@@ -22,7 +22,10 @@ app.post('/api/cards/', (req, res) => {
     cards: req.body.cards,
     total: req.body.total,
   });
-  deck.save().then((deck) => res.send(deck), (e) => res.send(e));
+
+  deck.save()
+  .then((deck) => res.send(deck),
+  (e) => res.status(400).send(e));
 });
 
 app.get('/api/decks/', (req, res) => {
@@ -32,3 +35,5 @@ app.get('/api/decks/', (req, res) => {
 app.listen(port, () => {
   console.log(`app started on port ${port}`);
 });
+
+module.exports = { app };

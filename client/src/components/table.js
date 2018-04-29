@@ -45,19 +45,19 @@ class Table extends Component {
             </tr>
           </thead>
           {this.props.suits.map((suit, i) =>
-             <TableRow
-               key={i}
-               suit={suit}
-               cards={this.state.cards.slice(i * 13, (i + 1) * 13)}/>
+             <TableRow key={i}
+                       suit={suit}
+                       cards={this.state.cards.slice(i * 13, (i + 1) * 13)}/>
           )}
         </table>
-        {this.state.safe ? <Score
-              cards={this.state.cards}
-              suits={this.props.suits}
-              triggerUpdate={this.updateTotal} />
-            : null }
-        {this.state.safe ? <AvgScore totals={this.state.totals} triggerUpdate={this.updateTotal} />
-                : null }
+        {this.state.safe ?
+          <Score cards={this.state.cards}
+                 suits={this.props.suits}
+                 triggerUpdate={this.updateTotal} /> : null }
+
+        {this.state.safe ?
+          <AvgScore totals={this.state.totals}
+                    triggerUpdate={this.updateTotal} /> : null }
 
       </div>
     );

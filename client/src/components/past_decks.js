@@ -36,10 +36,9 @@ class Table extends Component {
                 </tr>
               </thead>
               {this.props.suits.map((suit, i) =>
-                 <TableRow
-                   key={`${i} ${suit}`}
-                   suit={suit}
-                   cards={deck.cards.slice(i * 13, (i + 1) * 13)}/>
+                 <TableRow key={`${i} ${suit}`}
+                           suit={suit}
+                           cards={deck.cards.slice(i * 13, (i + 1) * 13)}/>
               )}
             </table>
               <Score key={`${index + 1000}`}
