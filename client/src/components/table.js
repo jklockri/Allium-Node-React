@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TableRow from './table_row';
 import Score from './score';
-import Emoji from 'react-emoji-render';
+import AvgScore from './average_score';
 
 class Table extends Component {
   constructor() {
@@ -52,10 +52,14 @@ class Table extends Component {
                cards={this.state.cards.slice(i * 13, (i + 1) * 13)}/>
           )}
         </table>
-        {this.state.safe ? <Score totals ={this.state.totals}
+        {this.state.safe ? <Score
               cards={this.state.cards}
               suits={this.props.suits}
-              triggerUpdate={this.updateTotal} /> : null }
+              triggerUpdate={this.updateTotal} />
+            : null }
+        {this.state.safe ? <AvgScore totals={this.state.totals} triggerUpdate={this.updateTotal} />
+                : null }
+
       </div>
     );
   }

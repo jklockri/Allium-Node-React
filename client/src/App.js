@@ -8,15 +8,16 @@ class App extends Component {
     this.state = {
       update: 0,
       showPastDecks: false,
+      showCurrentDeck: true,
     };
   }
 
   updateKey = () => {
-    this.setState({ update: this.state.update + 1, showPastDecks: false });
+    this.setState({ update: this.state.update + 1, showPastDecks: false, showCurrentDeck: true });
   };
 
   fetchPastDecks = () => {
-    this.setState({ showPastDecks: true });
+    this.setState({ showPastDecks: true, showCurrentDeck: false });
   };
 
   render() {
@@ -25,7 +26,9 @@ class App extends Component {
       <div className="container">
 
         <h1>Node Dealer </h1>
-        <Table key={this.state.update} suits={suits}/>
+        {this.state.showCurrentDeck ?
+        <Table key={this.state.update} suits={suits}/> : null}
+
         <button type="button"
                 className="btn btn-primary"
                 onClick = {this.updateKey}>

@@ -19,8 +19,7 @@ class TableRow extends Component {
                 return <td key={index}>{card.name}<Emoji text="♣️" /> </td>;
               }
             }
-
-            )}
+          )}
         </tr>
       </tbody>
     );

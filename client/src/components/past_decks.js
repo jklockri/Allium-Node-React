@@ -26,6 +26,7 @@ class Table extends Component {
     const tableHeaderArray = ['Suit', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
     return (
       <div>
+        <h1>Historical Decks</h1>
         {this.state.safe ?
           this.state.decks.decks.map((deck, index) =>
           <div key={index} className="container">
