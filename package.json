@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha tests/*.test.js",
     "test-watch": "nodemon --exec 'npm test'",
     "start": "node server.js",
