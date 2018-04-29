@@ -32,6 +32,10 @@ app.get('/api/decks/', (req, res) => {
   Deckdb.find().then((decks) => res.send({ decks }));
 });
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'));
+});
+
 app.listen(port, () => {
   console.log(`app started on port ${port}`);
 });
