@@ -23,7 +23,6 @@ class Table extends Component {
   };
 
   render() {
-    const tableHeaderArray = ['Suit', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
     return (
       <div>
         <h1>Historical Decks</h1>
@@ -33,7 +32,7 @@ class Table extends Component {
             <table className='table'>
               <thead>
                 <tr>
-                  {tableHeaderArray.map((el, ind) => <th key={ind} scope="col">{el}</th>)}
+                  {this.props.tableHeaderArray.map((el, ind) =><th key={ind} scope="col">{el}</th>)}
                 </tr>
               </thead>
               {this.props.suits.map((suit, i) =>

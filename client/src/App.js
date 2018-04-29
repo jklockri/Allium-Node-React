@@ -22,25 +22,29 @@ class App extends Component {
 
   render() {
     const suits = ['Spades', 'Hearts', 'Diamonds', 'Clubs'];
+    const tableHeaderArray = ['Suit', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
     return (
       <div className="container">
 
         <h1>Node Dealer </h1>
         {this.state.showCurrentDeck ?
-        <Table key={this.state.update} suits={suits}/> : null}
+        <Table key={this.state.update}
+               suits={suits}
+               tableHeaderArray = {tableHeaderArray} /> : null}
 
-        <button type="button"
-                className="btn btn-primary"
+        <button type = "button"
+                className = "btn btn-primary"
                 onClick = {this.updateKey}>
                 Deal Again</button>
 
-        <button type="button"
-                className="btn btn-success"
+        <button type = "button"
+                className = "btn btn-success"
                 onClick = {this.fetchPastDecks}>
                 Historical Decks</button>
 
         {this.state.showPastDecks ?
-          <PastDecks suits= {suits}/> : null}
+          <PastDecks suits = {suits}
+                     tableHeaderArray = {tableHeaderArray}/> : null}
 
       </div>
     );
