@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 const port = process.env.PORT;
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/api/cards', (req, res) => {
   let deck = new Deck;
