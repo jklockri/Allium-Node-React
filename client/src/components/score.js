@@ -32,7 +32,7 @@ class Score extends Component {
         })}
         <h1>Total</h1>
         {this.props.triggerUpdate(this.total)}
-        <h1>{((this.total / 104) * 100).toFixed(0)}%</h1>
+        <h1>{this.total}</h1>
 
       </div>
     );

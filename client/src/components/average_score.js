@@ -18,7 +18,7 @@ class AvgScore extends Component {
             (((this.props.totals.reduce((a, b) => a + b)
              / (104 * this.props.totals.length)) * 100)
              .toFixed(0))
-            : null }%</h1>
+            : null }</h1>
       </div>
     );
   }
