@@ -1,15 +1,6 @@
 import React, { Component } from 'react';
 
 class AvgScore extends Component {
-  constructor() {
-    super();
-    this.state = {
-      decks: [],
-      safe: false,
-    };
-    this.total = 0;
-  }
-
   render() {
     return (
       <div className="container">
