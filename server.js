@@ -16,7 +16,8 @@ app.get('/api/cards', (req, res) => {
   let shuffledDeck = deck.shuffle();
   Deckdb.find()
     .then((decks) => decks.map(cards => cards.total))
-      .then((totals) => res.send({ shuffledDeck, totals }));
+      .then((totals) => res.send({ shuffledDeck, totals }),
+      (e) => res.status(400).send(e));
 });
 
 app.post('/api/cards/', (req, res) => {
@@ -31,7 +32,8 @@ app.post('/api/cards/', (req, res) => {
 });
 
 app.get('/api/decks/', (req, res) => {
-  Deckdb.find().then((decks) => res.send({ decks }));
+  Deckdb.find().then((decks) => res.send({ decks }),
+(e) => res.status(400).send(e));
 });
 
 app.get('*', (req, res) => {
