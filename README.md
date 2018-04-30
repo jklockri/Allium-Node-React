@@ -1,6 +1,6 @@
 # Allium-Node-React
 
-This app generates random cards into a table then scores the table based on where each card is located. It will also keep track of all past deals using MongoDb. The app is built with a Node.js back-end and a React front-end. 
+This app generates random cards into a table then scores the table based on where each card is located. It will also keep track of all past deals using MongoDb. The app is built with a Node.js back-end and a React front-end.
 
 ## Demo site
 https://salty-wildwood-82338.herokuapp.com/
@@ -48,5 +48,5 @@ npm run dev
 ## Running the tests
 
 Make sure you are in  ```Allium-Node-React/```
-Run ```npm run test-watch``` to run tests with nodemon
+Run ```npm run test-watch``` to run tests with nodemon or
 Run ```npm run test``` to run the tests once
